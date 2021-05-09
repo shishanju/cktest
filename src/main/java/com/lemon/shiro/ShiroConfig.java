@@ -49,7 +49,7 @@ public class ShiroConfig {
 	public SecurityManager securityManager(MyRealm myReal) {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 		
-       securityManager.setSessionManager(sessionManager());
+        securityManager.setSessionManager(sessionManager());
 		
 		securityManager.setRealm(myReal);
 		return securityManager;

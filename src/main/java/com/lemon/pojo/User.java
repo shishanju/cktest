@@ -1,7 +1,10 @@
 package com.lemon.pojo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -37,6 +40,8 @@ public class User implements Serializable {
     private String password;
 
     @ApiModelProperty(value = "注册时间")
+    //自动插入时间不需要每次写再控制层 new Data()
+    @TableField(fill = FieldFill.INSERT)
     private Date regtime;
 
 

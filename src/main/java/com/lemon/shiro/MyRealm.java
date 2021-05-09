@@ -24,7 +24,7 @@ public class MyRealm extends AuthorizingRealm{
 		return null;
 	}
 
-	
+	//登录
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		
