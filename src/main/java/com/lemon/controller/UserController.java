@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lemon.common.Result;
 import com.lemon.pojo.User;
 import com.lemon.service.UserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -26,6 +27,8 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping("/user")
+@Api("用户模块")
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -70,7 +73,7 @@ public class UserController {
             Subject subject =  SecurityUtils.getSubject();
             subject.login(token);
         } catch (AuthenticationException e) {
-            if (e instanceof UnknownAccountException e1){
+            if (e instanceof UnknownAccountException){
                 result = new Result("0","用户名错误");
             }else {
                 result = new Result("0","密码错误");

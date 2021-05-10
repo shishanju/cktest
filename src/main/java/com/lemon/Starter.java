@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @MapperScan(basePackages="com.lemon.mapper")
 @EnableTransactionManagement
-public class Starter {
+public class    Starter {
     public static void main(String[] args) {
         SpringApplication.run(Starter.class, args);
     }
