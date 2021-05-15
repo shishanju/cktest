@@ -6,6 +6,11 @@ import org.apache.ibatis.reflection.MetaObject;
 import java.util.Date;
 
 public class MyMetaObjectHandler implements MetaObjectHandler {
+    /**
+     * 1.每次对数据更新会自动填充时间，次例子新增用户，自动增添新增添加的时间
+     * 2.此方法为insert方法
+     * @param metaObject
+     */
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("regtime", new Date(), metaObject);

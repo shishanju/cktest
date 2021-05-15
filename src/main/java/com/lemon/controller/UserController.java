@@ -28,6 +28,7 @@ import java.util.Date;
 @RestController
 @RequestMapping("/user")
 @Api("用户模块")
+//解决跨域问题，不加的话前端访问不到
 @CrossOrigin
 public class UserController {
 
@@ -72,6 +73,9 @@ public class UserController {
             //shiro
             Subject subject =  SecurityUtils.getSubject();
             subject.login(token);
+            //将sessionID返回去,否则每次请求都以为是新用户
+            String sessionId = (String) SecurityUtils.getSubject().getSession().getId();
+            result = new Result("1", sessionId, "登陆成功");
         } catch (AuthenticationException e) {
             if (e instanceof UnknownAccountException){
                 result = new Result("0","用户名错误");

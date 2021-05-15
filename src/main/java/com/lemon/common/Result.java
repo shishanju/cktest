@@ -25,4 +25,10 @@ public class Result {
         this.status = status;
         this.message = message;
     }
+
+    public Result(String status, Object data, String message) {
+        this.status = status;
+        this.data = data;
+        this.message = message;
+    }
 }
