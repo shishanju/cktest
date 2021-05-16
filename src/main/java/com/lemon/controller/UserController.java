@@ -29,7 +29,7 @@ import java.util.Date;
 @RequestMapping("/user")
 @Api("用户模块")
 //解决跨域问题，不加的话前端访问不到
-@CrossOrigin
+//@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -74,8 +74,9 @@ public class UserController {
             Subject subject =  SecurityUtils.getSubject();
             subject.login(token);
             //将sessionID返回去,否则每次请求都以为是新用户
-            String sessionId = (String) SecurityUtils.getSubject().getSession().getId();
-            result = new Result("1", sessionId, "登陆成功");
+            String sessionId = (String)subject.getSession().getId();
+            User loginUser= (User)subject.getPrincipal();
+            result = new Result("1", loginUser.getId(), sessionId);
         } catch (AuthenticationException e) {
             if (e instanceof UnknownAccountException){
                 result = new Result("0","用户名错误");
@@ -85,6 +86,24 @@ public class UserController {
             e.printStackTrace();
         }
         //调用业务层方法，插入到DB,统一处理异常
+        return result;
+    }
+
+    @GetMapping("/logout")
+    @ApiOperation(value="退出方法",httpMethod="GET")
+    public Result logout(User user){
+        Result result = null;
+        //推出会话shiro的方法
+        SecurityUtils.getSubject().logout();
+        result = new Result("1","账号未登录");
+        return result;
+    }
+
+    @GetMapping("/unauth")
+    @ApiOperation(value="未授权方法",httpMethod="GET")
+    public Result unauth(User user){
+        Result result = null;
+        result = new Result("1","账号未登录");
         return result;
     }
 
