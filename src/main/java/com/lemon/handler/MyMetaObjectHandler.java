@@ -16,7 +16,9 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void insertFill(MetaObject metaObject) {
+
         this.setFieldValByName("regtime", new Date(), metaObject);
+        this.setFieldValByName("create_time", new Date(), metaObject);
     }
 
     @Override

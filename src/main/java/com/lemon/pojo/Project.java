@@ -42,5 +42,7 @@ public class Project implements Serializable {
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
+    @ApiModelProperty(value = "host")
+    private String host;
 
 }
