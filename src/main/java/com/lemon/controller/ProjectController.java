@@ -2,6 +2,7 @@ package com.lemon.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.lemon.common.Result;
 import com.lemon.pojo.Project;
 import com.lemon.pojo.User;
@@ -38,7 +39,7 @@ public class ProjectController {
         Result result = null;
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("create_user", userId);
-        List list = projectService.list(queryWrapper);
+        List<Project> list = projectService.list(queryWrapper);
         result = new Result("1", list, "项目列表");
         return result;
     }

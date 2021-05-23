@@ -31,7 +31,7 @@ public class Api implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "项目编号")
-    private Integer projectId;
+    private Integer api_classification_id;
 
     @ApiModelProperty(value = "接口名称")
     private String name;
