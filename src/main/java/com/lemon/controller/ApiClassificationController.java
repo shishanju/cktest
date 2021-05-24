@@ -12,6 +12,7 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,6 +52,18 @@ public class ApiClassificationController {
         apiClassification.setCreateUser(user.getId());
         apiClassificationService.removeById(apiClassification);
         result = new Result("1", apiClassification,"删除成功");
+        return result;
+    }
+
+    @PostMapping("/addClassify")
+    @ApiOperation("添加分类")
+    public Result addClassify(ApiClassification apiClassification){
+        Result result = null;
+        apiClassification.setCreateTime(new Date());
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        apiClassification.setCreateUser(user.getId());
+        apiClassificationService.save(apiClassification);
+        result = new Result("1", apiClassification, "添加接口成功");
         return result;
     }
 }
