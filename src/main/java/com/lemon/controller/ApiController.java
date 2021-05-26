@@ -29,7 +29,7 @@ public class ApiController {
     @Autowired
     ApiService apiService;
 
-    @GetMapping("/showApiUnderProjec")
+    @GetMapping("/showApiUnderProject")
     @ApiOperation("查询接口项目内容")
     public Result showApiListByProject(Integer projectId){
         List<ApiListVo> list = apiService.showApiListByProject(projectId);
