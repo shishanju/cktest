@@ -26,6 +26,6 @@ public class ApiServiceImpl extends ServiceImpl<ApiMapper, Api> implements ApiSe
 
     public List<ApiListVo> showApiListByProject(Integer projectId){
         return apiMapper.showApiListByProject(projectId);
-    };
+    }
 
 }
