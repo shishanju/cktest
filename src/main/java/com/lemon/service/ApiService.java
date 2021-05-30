@@ -3,6 +3,7 @@ package com.lemon.service;
 import com.lemon.common.ApiListVo;
 import com.lemon.pojo.Api;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lemon.pojo.ApiClassification;
 
 import java.util.List;
 
@@ -17,5 +18,7 @@ import java.util.List;
 public interface ApiService extends IService<Api> {
 
     public List<ApiListVo> showApiListByProject(Integer projectId);
+
+    public List<ApiListVo> showApiListClassification(Integer apiClassificationId);
 
 }

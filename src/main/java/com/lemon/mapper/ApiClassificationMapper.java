@@ -23,7 +23,8 @@ public interface ApiClassificationMapper extends BaseMapper<ApiClassification> {
     @Select("SELECT * FROM api_classification WHERE project_id =#{projectId}")
     @Results({
             @Result(column = "id", property = "id"),
-            @Result(column = "project_id", property = "apis", many = @Many(select = "com.lemon.mapper.ApiMapper.findApi"))
+            @Result(column = "project_id", property = "projectId"),
+            @Result(column = "id", property = "apis", many = @Many(select = "com.lemon.mapper.ApiMapper.findApi"))
     })
     public List<ApiClassificationVo> getWithApi(Integer projectId);
 

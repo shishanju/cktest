@@ -3,6 +3,7 @@ package com.lemon.service.impl;
 import com.lemon.common.ApiListVo;
 import com.lemon.pojo.Api;
 import com.lemon.mapper.ApiMapper;
+import com.lemon.pojo.ApiClassification;
 import com.lemon.service.ApiService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class ApiServiceImpl extends ServiceImpl<ApiMapper, Api> implements ApiSe
 
     public List<ApiListVo> showApiListByProject(Integer projectId){
         return apiMapper.showApiListByProject(projectId);
+    }
+
+    public List<ApiListVo> showApiListClassification(Integer apiClassificationId){
+        return apiMapper.showApiListClassification(apiClassificationId);
     }
 
 }
