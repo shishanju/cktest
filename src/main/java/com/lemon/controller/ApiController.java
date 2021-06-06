@@ -4,8 +4,10 @@ package com.lemon.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lemon.common.ApiClassificationVo;
 import com.lemon.common.ApiListVo;
+import com.lemon.common.ApiVO;
 import com.lemon.common.Result;
 import com.lemon.pojo.ApiClassification;
+import com.lemon.pojo.User;
 import com.lemon.service.ApiService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,18 +36,24 @@ public class ApiController {
     @GetMapping("/showApiUnderProject")
     @ApiOperation("查询接口项目内容")
     public Result showApiListByProject(Integer projectId){
-        Result result = null;
         List<ApiListVo> list = apiService.showApiListByProject(projectId);
-        result = new Result("1", list);
+        Result result = new Result("1", list);
         return result;
     }
 
     @GetMapping("/showApiUnderApiClassification")
     @ApiOperation("查询接口内容")
     public Result showApiUnderApiClassification(Integer apiClassificationId){
-        Result result = null;
         List<ApiListVo> list = apiService.showApiListClassification(apiClassificationId);
-        result = new Result("1", list);
+        Result result = new Result("1", list);
+        return result;
+    }
+
+    @GetMapping("/toApiView")
+    @ApiOperation("查询接口内容")
+    public Result findApiViewVO(Integer apiId){
+        ApiVO api = apiService.findApiViewVO(apiId);
+        Result result = new Result("1", api);
         return result;
     }
 

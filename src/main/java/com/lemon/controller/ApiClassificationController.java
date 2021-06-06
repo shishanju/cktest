@@ -1,6 +1,7 @@
 package com.lemon.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lemon.common.ApiClassificationVo;
 import com.lemon.common.Result;
 import com.lemon.pojo.ApiClassification;
@@ -65,5 +66,14 @@ public class ApiClassificationController {
         apiClassificationService.save(apiClassification);
         result = new Result("1", apiClassification, "添加接口成功");
         return result;
+    }
+
+    //根据projectId单表查询分类信息
+    @GetMapping("/findAll")
+    public Result findAll(Integer projectId){
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("project_id", projectId);
+        List<ApiClassification> list = apiClassificationService.list(queryWrapper);
+        return new Result("1", list);
     }
 }

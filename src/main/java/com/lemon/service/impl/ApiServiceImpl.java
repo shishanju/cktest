@@ -1,6 +1,7 @@
 package com.lemon.service.impl;
 
 import com.lemon.common.ApiListVo;
+import com.lemon.common.ApiVO;
 import com.lemon.pojo.Api;
 import com.lemon.mapper.ApiMapper;
 import com.lemon.pojo.ApiClassification;
@@ -31,6 +32,10 @@ public class ApiServiceImpl extends ServiceImpl<ApiMapper, Api> implements ApiSe
 
     public List<ApiListVo> showApiListClassification(Integer apiClassificationId){
         return apiMapper.showApiListClassification(apiClassificationId);
+    }
+
+    public ApiVO findApiViewVO(Integer apiId){
+        return apiMapper.findApiViewVO(apiId);
     }
 
 }

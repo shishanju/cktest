@@ -1,6 +1,7 @@
 package com.lemon.mapper;
 
 import com.lemon.common.ApiListVo;
+import com.lemon.common.ApiVO;
 import com.lemon.pojo.Api;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lemon.pojo.ApiClassification;
@@ -27,4 +28,7 @@ public interface ApiMapper extends BaseMapper<Api> {
 
     @Select("SELECT t1.*, t2.name classificationName FROM api t1, api_classification t2 WHERE t2.id = #{apiClassificationId} AND t1.api_classification_id=t2.id")
     public List<ApiListVo> showApiListClassification(Integer apiClassificationId);
+
+    @Select("SELECT t1.*,t2.username creatUsername FROM api t1, user t2 where t1.create_user = t2.id AND t1.id = #{apiId}")
+    public ApiVO findApiViewVO(Integer apiId);
 }
