@@ -5,6 +5,9 @@ import com.lemon.common.ApiVO;
 import com.lemon.pojo.Api;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lemon.pojo.ApiClassification;
+import org.apache.ibatis.annotations.Many;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -30,5 +33,9 @@ public interface ApiMapper extends BaseMapper<Api> {
     public List<ApiListVo> showApiListClassification(Integer apiClassificationId);
 
     @Select("SELECT t1.*,t2.username creatUsername FROM api t1, user t2 where t1.create_user = t2.id AND t1.id = #{apiId}")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "requestParams", column = "id", many = @Many(select = "com.lemon.mapper.ApiRequestParamMapper.findAll"))
+    })
     public ApiVO findApiViewVO(Integer apiId);
 }
